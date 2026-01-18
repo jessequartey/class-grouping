@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { db } from '@/db';
 import { classes } from '@/db/schema';
 import { generateClassId, generateAdminToken } from '@/lib/id-generator';
@@ -42,6 +43,8 @@ export async function POST(request: NextRequest) {
       adminToken,
       adminUrl,
     };
+
+    revalidatePath('/');
 
     return NextResponse.json(response, { status: 201 });
   } catch (error) {

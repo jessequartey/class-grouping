@@ -52,7 +52,7 @@ export default function AutocompleteField({
         <div className="relative">
           <Combobox.Input
             id={id}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-10"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent pr-10 text-gray-900"
             placeholder={placeholder}
             onChange={(event) => {
               setQuery(event.target.value);

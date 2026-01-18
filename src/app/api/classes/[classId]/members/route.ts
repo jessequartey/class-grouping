@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { revalidatePath } from 'next/cache';
 import { db } from '@/db';
 import { classes, members, groups, groupMembers } from '@/db/schema';
 import { eq } from 'drizzle-orm';
@@ -61,6 +62,8 @@ export async function POST(
       memberId,
       success: true,
     };
+
+    revalidatePath('/');
 
     return NextResponse.json(response, { status: 201 });
   } catch (error) {
