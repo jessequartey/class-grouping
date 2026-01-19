@@ -192,7 +192,14 @@ export default async function AdminPage({ params, searchParams }: AdminPageProps
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {members.map((member) => (
-                <div key={member.id} className="p-4 bg-gray-50 rounded-lg border border-gray-200">
+                <div
+                  key={member.id}
+                  className={`p-4 rounded-lg ${
+                    !member.groupId
+                      ? 'border-2 border-red-400 bg-red-50'
+                      : 'border border-gray-200 bg-gray-50'
+                  }`}
+                >
                   <p className="font-medium text-gray-900">{member.name}</p>
                   <p className="text-sm text-gray-600 mt-1">
                     {member.sector} • {member.location}
